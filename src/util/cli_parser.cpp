@@ -1,7 +1,7 @@
 #include <utility>
 #include <nudny/util/cli_parser.hpp>
 
-namespace nd::util {
+namespace nudny::util {
 
 	CliParser::CliParser(int t_argc, char* t_argv[]) {
 		parse(t_argc, t_argv);

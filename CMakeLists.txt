@@ -9,6 +9,7 @@ set(MOD_ALIAS "nudny::arg_parser")
 set(TESTS_DIR "test")
 set(INC_DIR "include")
 set(SRC_DIR "src")
+set(SUBMOD_DIR "submodules")
 
 
 project(${MOD_NAME} VERSION 0.1.0 DESCRIPTION ${MOD_DESC})
@@ -36,6 +37,7 @@ add_library(${MOD_NAME}
 )
 target_include_directories(${MOD_NAME}
 	PUBLIC
+	${CMAKE_CURRENT_SOURCE_DIR}/${SUBMOD_DIR}/nlohmann/include	
 	${CMAKE_CURRENT_SOURCE_DIR}/${INC_DIR}
 )
 option(RELEASE "Relese" OFF)
