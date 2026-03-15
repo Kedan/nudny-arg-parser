@@ -32,6 +32,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 enable_testing()
+
+add_subdirectory(${SUBMOD_DIR}/nlohmann)
+
 add_library(${MOD_NAME}
 	src/util/cli_parser.cpp
 )
@@ -40,6 +43,10 @@ target_include_directories(${MOD_NAME}
 	${CMAKE_CURRENT_SOURCE_DIR}/${SUBMOD_DIR}/nlohmann/include	
 	${CMAKE_CURRENT_SOURCE_DIR}/${INC_DIR}
 )
+target_link_directories(${MOD_NAME}
+	PRIVATE
+	${SUBMOD_DIR}/nlohmann
+	)
 option(RELEASE "Relese" OFF)
 if(RELEASE)
 	message(STATUS "==== Build release version ====")
