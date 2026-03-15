@@ -32,7 +32,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 enable_testing()
 add_library(${MOD_NAME}
-	src/core/arg/Parser.cpp
+	src/util/cli_parser.cpp
 )
 target_include_directories(${MOD_NAME}
 	PUBLIC
