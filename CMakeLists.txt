@@ -9,7 +9,7 @@ set(MOD_ALIAS "nudny::arg_parser")
 set(TESTS_DIR "test")
 set(INC_DIR "include")
 set(SRC_DIR "src")
-set(SUBMOD_DIR "submodules")
+set(SUBMOD_DIR "submodule")
 
 
 project(${MOD_NAME} VERSION 0.1.0 DESCRIPTION ${MOD_DESC})
@@ -33,19 +33,21 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 enable_testing()
 
-add_subdirectory(${SUBMOD_DIR}/nlohmann)
+if(NOT TARGET nlohmann_json::nlohmann_json) 
+	add_subdirectory(${SUBMOD_DIR}/nlohmann)
+endif()
 
 add_library(${MOD_NAME}
 	src/util/cli_parser.cpp
 )
 target_include_directories(${MOD_NAME}
 	PUBLIC
-	${CMAKE_CURRENT_SOURCE_DIR}/${SUBMOD_DIR}/nlohmann/include	
+	${SUBMOD_DIR}/nlohmann/include	
 	${CMAKE_CURRENT_SOURCE_DIR}/${INC_DIR}
 )
 target_link_directories(${MOD_NAME}
 	PRIVATE
-	${SUBMOD_DIR}/nlohmann
+	nlohmann_json::nlohmann_json
 	)
 option(RELEASE "Relese" OFF)
 if(RELEASE)
