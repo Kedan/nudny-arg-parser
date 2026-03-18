@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 3.23)
 
-
-
 set(MOD_NAME "nudny-arg-parser")
 set(MOD_DESC "application argument parser")
 set(MOD_ALIAS "nudny::arg_parser")
 
 set(TESTS_DIR "test")
 set(INC_DIR "include")
-set(SRC_DIR "src")
+set(SRC_DIR "src/util")
 set(SUBMOD_DIR "submodule")
 
 
@@ -33,12 +31,12 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 enable_testing()
 
-if(NOT TARGET nlohmann_json::nlohmann_json) 
+if(NOT TARGET nlohmann_json::nlohmann_json)
 	add_subdirectory(${SUBMOD_DIR}/nlohmann)
 endif()
 
 add_library(${MOD_NAME}
-	src/util/cli_parser.cpp
+	${SRC_DIR}/cli_parser.cpp
 )
 target_include_directories(${MOD_NAME}
 	PUBLIC
@@ -48,7 +46,8 @@ target_include_directories(${MOD_NAME}
 target_link_directories(${MOD_NAME}
 	PRIVATE
 	nlohmann_json::nlohmann_json
-	)
+)
+	
 option(RELEASE "Relese" OFF)
 if(RELEASE)
 	message(STATUS "==== Build release version ====")
