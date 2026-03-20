@@ -35,17 +35,23 @@ if(NOT TARGET nlohmann_json::nlohmann_json)
 	add_subdirectory(${SUBMOD_DIR}/nlohmann)
 endif()
 
+if(NOT TARGET nudny::util)
+	add_subdirectory(${SUBMOD_DIR}/nudny-util)
+endif()
+
 add_library(${MOD_NAME}
 	${SRC_DIR}/cli_parser.cpp
 )
 target_include_directories(${MOD_NAME}
 	PUBLIC
-	${SUBMOD_DIR}/nlohmann/include	
+	${SUBMOD_DIR}/nlohmann/include
+	${SUBMOD_DIR}/nudny-util/include
 	${CMAKE_CURRENT_SOURCE_DIR}/${INC_DIR}
 )
-target_link_directories(${MOD_NAME}
+target_link_libraries(${MOD_NAME}
 	PRIVATE
 	nlohmann_json::nlohmann_json
+	nudny::util
 )
 	
 option(RELEASE "Relese" OFF)
