@@ -28,7 +28,7 @@ namespace nudny::util {
 	}
 
 	std::string CliParser::get(int t_index) const {
-		if(m_data["positional"].size() < t_index) {
+		if(m_data["positional"].size() > t_index) {
 			return m_data["positional"][t_index];
 		}
 		throw std::invalid_argument("CLI provided less than " + std::to_string(t_index) 
