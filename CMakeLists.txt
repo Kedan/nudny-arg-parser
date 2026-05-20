@@ -6,7 +6,7 @@ set(MOD_ALIAS "nudny::arg_parser")
 
 set(TESTS_DIR "test")
 set(INC_DIR "include")
-set(SRC_DIR "src/util")
+set(SRC_DIR "src/cmd")
 set(SUBMOD_DIR "submodule")
 
 

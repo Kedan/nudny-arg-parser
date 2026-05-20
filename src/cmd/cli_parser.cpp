@@ -1,5 +1,5 @@
 #include <utility>
-#include <nudny/util/cli_parser.hpp>
+#include <nudny/cmd/cli_parser.hpp>
 
 namespace nudny::util {
 
