@@ -4,7 +4,7 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
-namespace nudny::util {
+namespace nudny::cmd{
 
 	class CliParser {
 		public:
@@ -37,4 +37,4 @@ namespace nudny::util {
 			std::shared_ptr<CliParser> m_cli;
 	}; // class Commander
 
-}; // namespace nd::util
+}; // namespace nd::cmd
